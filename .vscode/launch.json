@@ -29,17 +29,17 @@
         },
         {
             "type": "java",
-            "name": "App",
+            "name": "DisplayBooksClass",
             "request": "launch",
-            "mainClass": "Login.App",
+            "mainClass": "DisplayBooks.DisplayBooksClass",
             "projectName": "LibManProj_2315c73d",
             "vmArgs": "--module-path \"C:/Users/sriha/OneDrive/Desktop/Java/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
-            "name": "DisplayBooksClass",
+            "name": "App",
             "request": "launch",
-            "mainClass": "DisplayBooks.DisplayBooksClass",
+            "mainClass": "LoginPage.App",
             "projectName": "LibManProj_2315c73d",
             "vmArgs": "--module-path \"C:/Users/sriha/OneDrive/Desktop/Java/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         },

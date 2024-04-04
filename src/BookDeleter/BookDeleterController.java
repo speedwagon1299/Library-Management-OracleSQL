@@ -21,7 +21,7 @@ public class BookDeleterController implements Initializable
 {
 
     ObservableList<String> cl = FXCollections.observableArrayList("Book Name","Book ID","Author Name","Publisher");
-    String ls[] = {"book_title","book_id","author_name","publisher"};    
+    String ls[] = {"book_title","book_id","author_id_1","publisher_id"};    
     int ind;
     Connection con;
 

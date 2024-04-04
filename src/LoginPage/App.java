@@ -1,4 +1,4 @@
-package Login;
+package LoginPage;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

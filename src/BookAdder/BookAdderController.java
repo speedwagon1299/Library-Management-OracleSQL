@@ -50,7 +50,7 @@ public class BookAdderController implements Initializable
             String book_title = book_title_btn.getText();
             String author_name = author_name_btn.getText();
             String pub_name = pub_name_btn.getText();
-            PreparedStatement ps = con.prepareStatement("insert into book values (?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into book(book_id,book_title,author_id_1,publisher_id) values (?,?,?,?)");
             ps.setInt(1,book_id);
             ps.setString(2,book_title);
             ps.setString(3,author_name);

@@ -59,7 +59,9 @@ public class DisplayBooksController implements Initializable {
 
     private void loadData() {        
         try {
-            PreparedStatement ps = con.prepareStatement("select * from book");
+            PreparedStatement ps = con.prepareStatement("select book_title, book_id, author_name, publisher_name " +  
+                                                            "from book, author, publisher " + 
+                                                            "where book.author_id_1 = author.author_id and book.publisher_id = publisher.publisher_id");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 String book_title = rs.getString("book_title");

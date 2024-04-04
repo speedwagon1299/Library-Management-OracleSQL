@@ -3,6 +3,7 @@ package PersonAdder;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -43,7 +44,7 @@ public class PersonAdderController implements Initializable {
 
     @FXML
     void AddPerson(ActionEvent event) {
-
+        PreparedStatement ps = 
     }
 
     @FXML
