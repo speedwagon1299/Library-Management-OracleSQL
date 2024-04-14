@@ -65,13 +65,14 @@ public class BookDeleterController implements Initializable
             }
             PreparedStatement ps;
             int row;
+            System.out.println(ls[ind] + " " + ind + " " + attrib);
             if(ind == 0) {
-                ps = con.prepareStatement("delete from book where " + ls[ind] + " = ?");
+                ps = con.prepareStatement("delete from book where b_title = ?");
                 ps.setString(1,attrib);
                 row = ps.executeUpdate();
             }
             else if(ind == 1) {
-                ps = con.prepareStatement("delete from book where " + ls[ind] + " = ?");
+                ps = con.prepareStatement("delete from book where b_id = ?");
                 ps.setInt(1,Integer.parseInt(attrib));
                 row = ps.executeUpdate();
             }

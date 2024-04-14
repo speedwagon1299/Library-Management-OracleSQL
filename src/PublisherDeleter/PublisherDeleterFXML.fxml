@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="442.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PublisherDeleter.BookDeleterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="442.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PublisherDeleter.PublisherDeleterController">
    <children>
       <Button fx:id="delete_button" layoutX="96.0" layoutY="340.0" mnemonicParsing="false" onAction="#DeletePublisher" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #69E74D;" text="Delete" />
       <Button fx:id="cancel_button" layoutX="265.0" layoutY="340.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #F85252;" text="Cancel" />
