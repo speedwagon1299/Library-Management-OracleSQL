@@ -69,6 +69,14 @@
         },
         {
             "type": "java",
+            "name": "PersonDeleterClass",
+            "request": "launch",
+            "mainClass": "PersonDeleter.PersonDeleterClass",
+            "projectName": "LibManProj_2315c73d",
+            "vmArgs": "--module-path \"C:/Users/sriha/OneDrive/Desktop/Java/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "PublisherAdderClass",
             "request": "launch",
             "mainClass": "PublisherAdder.PublisherAdderClass",

@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonAdder.PersonAdderController">
    <children>
       <ImageView fitHeight="179.0" fitWidth="165.0" layoutX="14.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
@@ -46,11 +45,6 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="130.0" text="Area Code :">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="130.0" text="Phone Number :">
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -65,37 +59,32 @@
       </VBox>
       <VBox layoutX="297.0" layoutY="92.0" prefHeight="262.0" prefWidth="277.0">
          <children>
-            <TextField fx:id="name_tf" promptText="Required">
+            <TextField fx:id="u_name_tf" promptText="Required">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="person_id_tf" promptText="Required">
+            <TextField fx:id="u_id_tf" promptText="Required">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox fx:id="gender_cb" prefHeight="26.0" prefWidth="148.0" promptText="Required">
+            <ComboBox fx:id="gender_cb" prefHeight="26.0" prefWidth="148.0">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField fx:id="address_tf" prefHeight="2.0" prefWidth="278.0">
+            <TextField fx:id="u_address_tf" prefHeight="2.0" prefWidth="278.0">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="area_code_tf">
+            <TextField fx:id="u_phone_tf" promptText="Required">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="phone_num_tf">
-               <VBox.margin>
-                  <Insets bottom="12.0" />
-               </VBox.margin>
-            </TextField>
-            <ComboBox fx:id="membership_cb" prefHeight="26.0" prefWidth="148.0">
+            <ComboBox fx:id="membership_cb" prefHeight="26.0" prefWidth="148.0" promptText="Required">
                <VBox.margin>
                   <Insets bottom="12.0" />
                </VBox.margin>
@@ -104,5 +93,6 @@
       </VBox>
       <Button layoutX="192.0" layoutY="402.0" mnemonicParsing="false" onAction="#AddPerson" prefHeight="27.0" prefWidth="81.0" style="-fx-background-color: #69E74D;" text="Save" />
       <Button layoutX="337.0" layoutY="402.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #F85252;" text="Cancel" />
+      <Label fx:id="delete_lb" alignment="CENTER" layoutX="153.0" layoutY="347.0" prefHeight="18.0" prefWidth="286.0" visible="false" />
    </children>
 </AnchorPane>
