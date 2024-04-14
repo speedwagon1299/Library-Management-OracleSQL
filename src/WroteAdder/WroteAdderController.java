@@ -19,7 +19,7 @@ public class WroteAdderController implements Initializable {
     Connection con;
     
     //Retrieve from BookAdder as previous page
-    int b_id_val;
+    int b_id_val = 3;
     
     @FXML
     private TextField a_id1_tf;

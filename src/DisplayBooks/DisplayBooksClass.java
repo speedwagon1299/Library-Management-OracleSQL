@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class DisplayBooksClass extends Application{
+public class DisplayBooksClass extends Application {
     @Override
     public void start(Stage primaryStage) 
     {

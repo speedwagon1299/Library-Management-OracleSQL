@@ -123,6 +123,7 @@ public class BookAdderController implements Initializable
             response_lb.setVisible(true);
             response_lb.setText("Book Already Exists!");
             response_lb.setStyle("-fx-text-fill: red;");
+            e.printStackTrace();
         }
         catch(Exception e)
         {
