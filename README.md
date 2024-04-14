@@ -1,18 +1,35 @@
-## Getting Started
+1. **AuthorAdder**
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+All 3 done
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
+2. **BookAdder**
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+All 3 done but **WroteAdder** must be inculcated
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+3. **BookDeleter**
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+4. **DisplayBooks**
+
+
+
+5. **LoginPage**
+
+All 3 done (login for database admin only)
+
+
+6. **PersonAdder**
+
+
+
+7. **PublisherAdder**
+
+All 3 done
+
+
+8. **WroteAdder**
+
+Must retrieve b_id from BookAdder page

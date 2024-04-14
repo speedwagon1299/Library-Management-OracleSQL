@@ -44,7 +44,7 @@ public class PersonAdderController implements Initializable {
 
     @FXML
     void AddPerson(ActionEvent event) {
-        PreparedStatement ps = 
+        
     }
 
     @FXML

@@ -1,4 +1,5 @@
 package BookAdder;
+
 import java.awt.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,29 +16,36 @@ public class BookAdderController implements Initializable
     Connection con;
 
     @FXML
-    private TextField author_name_btn;
+    private TextField b_id_tf;
 
     @FXML
-    private TextField book_id_btn;
+    private TextField b_title_tf;
 
     @FXML
-    private TextField book_title_btn;
+    private Button cancel_btn;
 
     @FXML
-    private Button cancel_button;
+    private TextField copies_tf;
 
     @FXML
-    private TextField pub_name_btn;
+    private TextField p_id_tf;
+
+    @FXML
+    private TextField price_tf;
 
     @FXML
     private Label response_lb;
 
     @FXML
-    private Button save_button;
+    private Button save_btn;
 
     @FXML
-    void CancelAction(ActionEvent event) 
+    private TextField year_tf;
+    
+    @FXML
+    void CancelAction(ActionEvent event) throws SQLException 
     {
+        con.close();
         System.exit(0);
     }
 
@@ -46,15 +54,64 @@ public class BookAdderController implements Initializable
     {
         try
         {  
-            int book_id = Integer.parseInt(book_id_btn.getText());
-            String book_title = book_title_btn.getText();
-            String author_name = author_name_btn.getText();
-            String pub_name = pub_name_btn.getText();
-            PreparedStatement ps = con.prepareStatement("insert into book(book_id,book_title,author_id_1,publisher_id) values (?,?,?,?)");
-            ps.setInt(1,book_id);
-            ps.setString(2,book_title);
-            ps.setString(3,author_name);
-            ps.setString(4, pub_name);
+            int b_id_val = Integer.parseInt(b_id_tf.getText());
+            String b_title_val = b_title_tf.getText();
+            int p_id_val;
+            if(p_id_tf.getText().equals("")) {
+                p_id_val = -1;
+            }    
+            else {
+                p_id_val = Integer.parseInt(p_id_tf.getText());
+            }
+            int year_val;
+            if(year_tf.getText().equals("")) {
+                year_val = -1;
+            }    
+            else {
+                year_val = Integer.parseInt(year_tf.getText());
+            }
+            double price_val;
+            if(price_tf.getText().equals("")) {
+                price_val = -1;
+            }    
+            else {
+                price_val = Double.parseDouble(price_tf.getText());
+            }
+            int copies_val;
+            if(copies_tf.getText().equals("")) {
+                copies_val = -1;
+            }    
+            else {
+                copies_val = Integer.parseInt(copies_tf.getText());
+            }
+            PreparedStatement ps = con.prepareStatement("insert into book (b_id, b_title, p_id, year, price, copies)" +
+                                                        " values (?,?,?,?,?,?)");
+            ps.setInt(1,b_id_val);
+            ps.setString(2,b_title_val);
+            if(p_id_val == -1) {
+                ps.setNull(3, java.sql.Types.NULL);
+            } 
+            else {
+                ps.setInt(3, p_id_val);
+            }
+            if(year_val == -1) {
+                ps.setNull(4, java.sql.Types.NULL);
+            } 
+            else {
+                ps.setInt(4, year_val);
+            }
+            if(price_val == -1) {
+                ps.setNull(5, java.sql.Types.NULL);
+            } 
+            else {
+                ps.setDouble(5, price_val);
+            }
+            if(copies_val == -1) {
+                ps.setNull(6, java.sql.Types.NULL);
+            }
+            else {
+                ps.setInt(6,copies_val);
+            }
             ps.executeUpdate();
             response_lb.setVisible(true);
             response_lb.setText("Book Added Successfully!");

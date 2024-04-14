@@ -1,4 +1,4 @@
-package BookAdder;
+package WroteAdder;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -11,14 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage; 
 
-public class BookAdderClass extends Application 
+public class WroteAdderClass extends Application 
 {
     @Override
     public void start(Stage primaryStage) 
     {
         try 
         {
-            Parent root = FXMLLoader.load(getClass().getResource("BookAdderFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("WroteAdderFXML.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Library Management System");

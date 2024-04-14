@@ -8,63 +8,83 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="442.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BookAdder.BookAdderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="480.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BookAdder.BookAdderController">
    <children>
-      <VBox layoutX="104.0" layoutY="79.0" prefHeight="224.0" prefWidth="321.0">
+      <VBox layoutX="113.0" layoutY="79.0" prefHeight="323.0" prefWidth="322.0">
          <children>
-            <TextField fx:id="book_title_btn" prefHeight="28.0" prefWidth="265.0" promptText="Enter Book Title">
+            <TextField fx:id="b_id_tf" prefHeight="28.0" prefWidth="265.0" promptText="Required">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="9.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="b_title_tf" prefHeight="28.0" prefWidth="264.0" promptText="Required">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="5.5" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="p_id_tf" prefHeight="28.0" prefWidth="264.0">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="9.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="year_tf" prefHeight="28.0" prefWidth="264.0">
                <VBox.margin>
                   <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="book_id_btn" prefHeight="28.0" prefWidth="264.0" promptText="Enter Book ID">
+            <TextField fx:id="price_tf" prefHeight="28.0" prefWidth="264.0">
                <VBox.margin>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="11.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="author_name_btn" prefHeight="28.0" prefWidth="264.0" promptText="Enter Author Name">
+            <TextField fx:id="copies_tf" prefHeight="28.0" prefWidth="264.0">
                <VBox.margin>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="pub_name_btn" prefHeight="28.0" prefWidth="264.0" promptText="Enter Publisher">
-               <VBox.margin>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="8.0" />
                </VBox.margin>
             </TextField>
          </children>
       </VBox>
-      <VBox layoutX="14.0" layoutY="79.0" prefHeight="224.0" prefWidth="99.0">
+      <VBox layoutX="14.0" layoutY="79.0" prefHeight="323.0" prefWidth="99.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="79.0" text="Book Title :">
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="79.0" text="Book ID :">
                <VBox.margin>
                   <Insets bottom="20.0" left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="25.0" prefWidth="79.0" text="Book ID :">
+            <Label alignment="CENTER" prefHeight="25.0" prefWidth="79.0" text="Book Title :">
                <VBox.margin>
                   <Insets bottom="20.0" left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="26.0" prefWidth="84.0" text="Author Name :">
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="84.0" text="Publisher ID :">
                <VBox.margin>
                   <Insets bottom="20.0" left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Label prefHeight="25.0" prefWidth="79.0" text="Publisher :">
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="84.0" text="Year :">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="84.0" text="Price :">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="84.0" text="Copies :">
                <VBox.margin>
                   <Insets bottom="20.0" left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
          </children>
       </VBox>
-      <Button fx:id="save_button" layoutX="96.0" layoutY="340.0" mnemonicParsing="false" onAction="#SaveBook" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #69E74D;" text="Save" />
-      <Button fx:id="cancel_button" layoutX="265.0" layoutY="340.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #F85252;" text="Cancel" />
-      <Label layoutX="163.0" layoutY="27.0" prefHeight="36.0" prefWidth="115.0" text="Add Book" textFill="#0033ff">
+      <Button fx:id="save_btn" layoutX="73.0" layoutY="448.0" mnemonicParsing="false" onAction="#SaveBook" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #69E74D;" text="Save" />
+      <Label layoutX="151.0" layoutY="31.0" prefHeight="36.0" prefWidth="176.0" text="Add New Book" textFill="#0033ff">
          <font>
             <Font name="Calibri" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="response_lb" alignment="CENTER" layoutX="139.0" layoutY="303.0" prefHeight="18.0" prefWidth="175.0" text="hi" visible="false" />
+      <Button fx:id="cancel_btn" layoutX="335.0" layoutY="448.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #F85252;" text="Cancel" />
+      <Label fx:id="response_lb" alignment="CENTER" layoutX="125.0" layoutY="402.0" prefHeight="18.0" prefWidth="262.0" visible="false" />
    </children>
 </AnchorPane>

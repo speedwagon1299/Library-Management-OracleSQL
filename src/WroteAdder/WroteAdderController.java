@@ -1,4 +1,4 @@
-package AuthorAdder;
+package WroteAdder;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -14,21 +14,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AuthorAdderController implements Initializable {
+public class WroteAdderController implements Initializable {
 
     Connection con;
+    
+    //Retrieve from BookAdder as previous page
+    int b_id_val;
+    
+    @FXML
+    private TextField a_id1_tf;
 
     @FXML
-    private TextField a_dob_tf;
+    private TextField a_id2_tf;
 
     @FXML
-    private TextField a_email_tf;
-
-    @FXML
-    private TextField a_id_tf;
-
-    @FXML
-    private TextField a_name_tf;
+    private TextField a_id3_tf;
 
     @FXML
     private Button cancel_btn;
@@ -46,37 +46,46 @@ public class AuthorAdderController implements Initializable {
     }
 
     @FXML
-    void SaveAuthor(ActionEvent event) {
+    void SaveWrote(ActionEvent event) {
         try {    
-            int a_id_val = Integer.parseInt(a_id_tf.getText());
-            String a_name_val = a_name_tf.getText();
-            String a_dob_val = a_dob_tf.getText();
-            String a_email_val = a_email_tf.getText();
-            PreparedStatement ps = con.prepareStatement("insert into author (a_id, a_name, a_dob,a_email) values (?, ?," + 
-                                                            "to_date(?,'DD-MM-YYYY'),?)");
-            ps.setInt(1,a_id_val);
-            ps.setString(2,a_name_val);
-            if(a_dob_val.equals("")) {
-                ps.setNull(3,java.sql.Types.NULL);
+            int a_id1_val = Integer.parseInt(a_id1_tf.getText());
+            int a_id2_val;
+            if(a_id2_tf.getText().equals("")) {
+                a_id2_val = -1;
             }
             else {
-                ps.setString(3, a_dob_val);
-            }
-            if(a_email_val.equals("")) {
-                ps.setNull(4,java.sql.Types.NULL);
+                a_id2_val = Integer.parseInt(a_id2_tf.getText());
+            } 
+            int a_id3_val;
+            if(a_id3_tf.getText().equals("")) {
+                a_id3_val = -1;
             }
             else {
-                ps.setString(4,a_email_val);
-            }
+                a_id3_val = Integer.parseInt(a_id3_tf.getText());
+            } 
+            PreparedStatement ps = con.prepareStatement("insert into wrote (b_id, a_id) values (?,?)");
+            ps.setInt(1,b_id_val);
+            ps.setInt(2,a_id1_val);
             ps.executeUpdate();
+            if(a_id2_val != -1) {
+                ps.setInt(1,b_id_val);
+                ps.setInt(2,a_id2_val);
+                ps.executeUpdate();
+            }
+            if(a_id3_val != -1) {
+                ps.setInt(1,b_id_val);
+                ps.setInt(2,a_id3_val);
+                ps.executeUpdate();
+            }
             response_lb.setVisible(true);
-            response_lb.setText("Author Added Successfully!");
+            response_lb.setVisible(true);
+            response_lb.setText("Added Successfully!");
             response_lb.setStyle("-fx-text-fill: green;");
             System.out.println("Update Successful");
         }
         catch(SQLException e) {
             response_lb.setVisible(true);
-            response_lb.setText("Author Already Exists!");
+            response_lb.setText("Entry Already Exists!");
             response_lb.setStyle("-fx-text-fill: red;");
         }
         catch(Exception e) {
@@ -86,13 +95,11 @@ public class AuthorAdderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try 
-        {
+        try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","C040"); 
-        } 
-        catch(Exception e) 
-        {
+        }
+        catch(Exception e) {
             e.printStackTrace();
         }
     }
