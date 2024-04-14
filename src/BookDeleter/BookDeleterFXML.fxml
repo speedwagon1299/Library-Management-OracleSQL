@@ -11,7 +11,7 @@
    <children>
       <Button fx:id="delete_button" layoutX="96.0" layoutY="340.0" mnemonicParsing="false" onAction="#DeleteBook" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #69E74D;" text="Delete" />
       <Button fx:id="cancel_button" layoutX="265.0" layoutY="340.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #F85252;" text="Cancel" />
-      <Label layoutX="147.0" layoutY="27.0" prefHeight="36.0" prefWidth="146.0" text="Delete Book" textFill="#0033ff">
+      <Label layoutX="157.0" layoutY="34.0" prefHeight="36.0" prefWidth="147.0" text="Delete Book" textFill="#0033ff">
          <font>
             <Font name="Calibri" size="29.0" />
          </font>

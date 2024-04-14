@@ -107,7 +107,7 @@ public class BookAdderController implements Initializable
                 ps.setDouble(5, price_val);
             }
             if(copies_val == -1) {
-                ps.setNull(6, java.sql.Types.NULL);
+                ps.setInt(6, 1);
             }
             else {
                 ps.setInt(6,copies_val);

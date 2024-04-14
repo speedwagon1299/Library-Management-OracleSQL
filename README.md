@@ -10,7 +10,7 @@ All 3 done but **WroteAdder** must be inculcated
 
 3. **BookDeleter**
 
-
+Wrote table needs to be finalized, others work
 
 4. **DisplayBooks**
 
@@ -30,6 +30,11 @@ All 3 done (login for database admin only)
 All 3 done
 
 
-8. **WroteAdder**
+8. **PublisherDeleter**
+
+
+
+
+9. **WroteAdder**
 
 Must retrieve b_id from BookAdder page
