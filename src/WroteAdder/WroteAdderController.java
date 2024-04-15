@@ -6,21 +6,32 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class WroteAdderController implements Initializable {
 
     Connection con;
-    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     //Retrieve from BookAdder as previous page
-    int b_id_val = 3;
+    int b_id_val;
     
+    public void setB_id_val(int b_id_val) {
+        this.b_id_val = b_id_val;
+    }
+
     @FXML
     private TextField a_id1_tf;
 
@@ -40,9 +51,17 @@ public class WroteAdderController implements Initializable {
     private Button save_btn;
 
     @FXML
-    void CancelAction(ActionEvent event) throws SQLException {
+    void CancelAction(ActionEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//BookAdder//BookAdderFXML.fxml"));
+        PreparedStatement ps = con.prepareStatement("delete from book where b_id = ?");
+        ps.setInt(1,b_id_val);
+        ps.executeUpdate();
         con.close();
-        System.exit(0);
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

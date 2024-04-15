@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPage.MainPageController">
+   <children>
+      <Label alignment="CENTER" layoutX="195.0" layoutY="38.0" prefHeight="50.0" prefWidth="357.0" text="What do you want to do?" textFill="#0bace1">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Button layoutX="43.0" layoutY="136.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Add Author" />
+      <Button layoutX="43.0" layoutY="195.0" mnemonicParsing="false" onAction="#delAuthor" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Delete Author" />
+      <Button layoutX="192.0" layoutY="136.0" mnemonicParsing="false" onAction="#addBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: aquamarine;" text="Add Book" />
+      <Button layoutX="192.0" layoutY="195.0" mnemonicParsing="false" onAction="#delBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Delete Book" />
+      <Button layoutX="195.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: aquamarine;" text="Display Books" />
+      <Button layoutX="192.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: pink;" text="Update Book" />
+      <Button layoutX="43.0" layoutY="260.0" mnemonicParsing="false" onAction="#addPublisher" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Add Publisher" />
+      <Button layoutX="43.0" layoutY="323.0" mnemonicParsing="false" onAction="#delPublisher" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Delete Publisher" />
+      <Button layoutX="344.0" layoutY="136.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Add Personal Details" />
+      <Button layoutX="344.0" layoutY="195.0" mnemonicParsing="false" onAction="#delPerson" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Remove Personal Details" />
+      <Button layoutX="344.0" layoutY="260.0" mnemonicParsing="false" onAction="#addMember" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Add/Renew Membership" />
+      <Button layoutX="538.0" layoutY="136.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="176.0" style="-fx-background-color: pink;" text="Current Borrower Details" />
+      <Button layoutX="538.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="176.0" style="-fx-background-color: pink;" text="Borrower History" />
+      <Button layoutX="538.0" layoutY="195.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="176.0" style="-fx-background-color: pink;" text="Buyer History" />
+      <Button layoutX="344.0" layoutY="323.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="View People/Members" />
+      <Button layoutX="538.0" layoutY="323.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="176.0" style="-fx-background-color: pink;" text="View Book Details" />
+   </children>
+</AnchorPane>

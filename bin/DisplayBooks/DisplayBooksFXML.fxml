@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -23,6 +24,8 @@
       </TableView>
       <ComboBox fx:id="attrib_cb" layoutX="113.0" layoutY="33.0" onAction="#selectAttribute" prefHeight="26.0" prefWidth="198.0" promptText="Select Criteria" />
       <TextField fx:id="attrib_tf" layoutX="424.0" layoutY="33.0" prefHeight="26.0" prefWidth="198.0" />
+      <Button layoutX="679.0" layoutY="34.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="26.0" prefWidth="57.0" text="Cancel" />
+      <!-- <Button fx:id="refresh_btn" layoutX="669.0" layoutY="34.0" mnemonicParsing="false" onAction="#reLoadData" text="Refresh" /> -->
       <!-- <Button fx:id="refresh_btn" layoutX="687.0" layoutY="34.0" mnemonicParsing="false" onAction="#redoLoadData" text="Refresh" /> -->
    </children>
 </AnchorPane>

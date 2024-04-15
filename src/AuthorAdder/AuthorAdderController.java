@@ -1,22 +1,30 @@
 package AuthorAdder;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AuthorAdderController implements Initializable {
 
     Connection con;
+    Parent root;
+    Stage stage;
+    Scene scene;
 
     @FXML
     private TextField a_dob_tf;
@@ -40,14 +48,19 @@ public class AuthorAdderController implements Initializable {
     private Button save_btn;
 
     @FXML
-    void CancelAction(ActionEvent event) throws SQLException {
+    void CancelAction(ActionEvent event) throws Exception {
         con.close();
-        System.exit(0);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//MainPage//MainPageFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     void SaveAuthor(ActionEvent event) {
-        try {    
+        try {     
             int a_id_val = Integer.parseInt(a_id_tf.getText());
             String a_name_val = a_name_tf.getText();
             String a_dob_val = a_dob_tf.getText();
@@ -86,13 +99,11 @@ public class AuthorAdderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try 
-        {
+        try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","C040"); 
-        } 
-        catch(Exception e) 
-        {
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","C040");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

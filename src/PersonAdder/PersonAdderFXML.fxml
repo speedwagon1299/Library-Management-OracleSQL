@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="179.0" fitWidth="165.0" layoutX="14.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/person_icon.png" />
+            <Image url="@person_icon.png" />
          </image>
       </ImageView>
       <Label layoutX="204.0" layoutY="29.0" prefHeight="50.0" prefWidth="192.0" text="Register Person">

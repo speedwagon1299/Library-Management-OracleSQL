@@ -1,19 +1,28 @@
 package BookAdder;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.sql.*;  
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class BookAdderController implements Initializable
 {
     Connection con;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     private TextField b_id_tf;
@@ -43,10 +52,15 @@ public class BookAdderController implements Initializable
     private TextField year_tf;
     
     @FXML
-    void CancelAction(ActionEvent event) throws SQLException 
+    void CancelAction(ActionEvent event) throws Exception 
     {
         con.close();
-        System.exit(0);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//MainPage//MainPageFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -127,6 +141,26 @@ public class BookAdderController implements Initializable
         }
         catch(Exception e)
         {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("..//WroteAdder//WroteAdderFXML.fxml"));
+            root = loader.load();	
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            WroteAdder.WroteAdderController controller = loader.getController();
+            controller.setB_id_val(Integer.parseInt(b_id_tf.getText()));
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch(IOException e) {
             e.printStackTrace();
         }
     }

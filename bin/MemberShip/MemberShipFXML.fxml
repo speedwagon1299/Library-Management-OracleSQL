@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="392.0" fitWidth="658.0" layoutX="-79.0" layoutY="-18.0" pickOnBounds="true">
          <image>
-            <Image url="@../../img/book_login.jpg" />
+            <Image url="@book_login.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="-451.0" layoutY="-108.0" />
