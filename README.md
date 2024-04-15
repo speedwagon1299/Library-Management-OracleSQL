@@ -3,38 +3,54 @@
 All 3 done
 
 
-2. **BookAdder**
-
-All 3 done but **WroteAdder** must be inculcated
-
-
-3. **BookDeleter**
-
-Wrote table needs to be finalized, others work
-
-4. **DisplayBooks**
-
-
-
-5. **LoginPage**
-
-All 3 done (login for database admin only)
-
-
-6. **PersonAdder**
-
-
-
-7. **PublisherAdder**
+2. **AuthorAdder**
 
 All 3 done
 
 
-8. **PublisherDeleter**
+3. **BookAdder**
+
+All 3 done but **WroteAdder** must be inculcated
 
 
+4. **BookDeleter**
+
+Wrote table needs to be finalized, others work
 
 
-9. **WroteAdder**
+5. **DisplayBooks**
+
+7 attributes can be chosen, more to be done
+
+
+6. **LoginPage**
+
+doesnt matter
+
+7. **MemberShip**
+
+Adding Person as a member done
+
+
+8. **PersonAdder**
+
+Done
+
+9. **PersonDeleter**
+
+Done
+
+
+10. **PublisherAdder**
+
+All 3 done
+
+
+11. **PublisherDeleter**
+
+Done
+
+
+12. **WroteAdder**
 
 Must retrieve b_id from BookAdder page
