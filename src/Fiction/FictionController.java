@@ -52,12 +52,9 @@ public class DisplayBooksController {
         String ch = attrib_cb.getValue();
         if(ch.equals("Book Name"))  ind = 0;
         else if(ch.equals("Book ID"))  ind = 1;
-        else if(ch.equals("Author ID")) ind = 2;
-        else if(ch.equals("Author Name")) ind = 3;
-        else if(ch.equals("Publisher Name")) ind = 4;
-        else if(ch.equals("Price Range"))   ind = 5;
-        else if(ch.equals("Copies Range")) ind = 6;
-        else    ind = 7;
+        else if(ch.equals("Subgenre")) ind = 2;
+        else if(ch.equals("Targer Age Group")) ind = 3;
+        else    ind = 4;
         list.clear();
         loadData();
     }
