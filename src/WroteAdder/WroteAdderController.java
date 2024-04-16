@@ -53,9 +53,6 @@ public class WroteAdderController implements Initializable {
     @FXML
     void CancelAction(ActionEvent event) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("..//BookAdder//BookAdderFXML.fxml"));
-        PreparedStatement ps = con.prepareStatement("delete from book where b_id = ?");
-        ps.setInt(1,b_id_val);
-        ps.executeUpdate();
         con.close();
         root = loader.load();	
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
