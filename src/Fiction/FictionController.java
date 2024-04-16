@@ -75,7 +75,7 @@ public class DisplayBooksController {
             }
             PreparedStatement ps = con.prepareStatement("select b.b_title, w.b_id, f.subgenre, f.target_age_group " +
                                                         "from book b, wrote w, fiction f " +
-                                                        "where b.b_id = w.b_id " + extra);
+                                                        "where b.b_id = w.b_id " );
             System.out.println("Hi");
             ResultSet rs = ps.executeQuery();
             System.out.println("Hi");
