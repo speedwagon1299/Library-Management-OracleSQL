@@ -1,0 +1,272 @@
+
+**********************************************************************************************************************************************
+
+1.	Add or Delete Author with all its attributes.
+
+insert into author (a_id, a_name, a_dob, a_email)
+values (a_id_val, a_name_val, to_date(a_dob_val,'DD-MM-YYYY'), a_email_val);
+
+delete from author
+where a_id = a_id_val;
+
+**********************************************************************************************************************************************
+
+2.	Add or Delete Publisher with all its attributes.
+
+insert into publisher (p_id, p_name)
+values (p_id_val, p_name_val);
+
+
+delete from publisher
+where p_id = p_id_val;
+
+**********************************************************************************************************************************************
+
+3a.	Add Book by using all its attributes in Book (for copies we can ask number of copies to be added and add it to current amount).
+	The insertion should also be done in the Wrote for author id. The book will not be allowed to be added unless author(s) and publisher
+	is already present.
+	
+[INCOMPLETE]
+
+insert into book (b_id, b_title, p_id, year, price, copies)
+values (b_id_val, b_title_val, p_id_val, year_val, price_val, copies_val);
+
+insert into wrote (b_id, a_id)
+values (b_id_val, a_id_val);
+
+**********************************************************************************************************************************************
+
+3b.	Delete book selecting either book id or book name.
+
+delete from book
+where b_id = b_id_val;
+
+delete from book
+where b_title = b_title_val;
+
+**********************************************************************************************************************************************
+
+3c.	Remove specified number of copies of the book.
+
+update book
+set copies = copies - copies_val
+where b_id = b_id_val;
+
+**********************************************************************************************************************************************
+
+4.	When a Book is added, its genres must also be mentioned and that insertion must be done in its appropriate tables. For example, if
+	a book is to be added in non fiction and education, it must ask the user to add genres and for each genre specify the required attributes.
+	(I'll be handling the asking part, just assume values are there to insert) [do for all 4 genres]
+	
+insert into fictionbook (b_id, subgenre, target_age_grp)
+values (b_id_val, subgenre_val, target_age_grp_val);
+
+insert into nonfictionbook (b_id, subgenre, topic)
+values (b_id_val, subgenre_val, topic_val);
+
+insert into educationbook (b_id, subject, subject_area, grade_level)
+values (b_id_val, subject_val, subject_area_val, grade_level_val);
+
+insert into childrenbook (b_id, age_range, interactivity_level)
+values (b_id_val, age_range_val, interactivity_level_val);
+
+**********************************************************************************************************************************************
+
+5.	Person details must be provided before they can borrow or buy so have query to insert information and mem_status either T or F
+
+insert into persons (u_id, u_name, u_gender, u_phone, u_address, mem_status)
+values (u_id_val, u_name_val, u_gender_val, u_phone_val, u_address_val, mem_status_val);
+
+**********************************************************************************************************************************************
+
+6.	Member is a specialization of Person and has extra attributes of mem_start date and duration.
+
+insert into members (u_id, mem_start_date, duration)
+values (u_id_val, to_date(mem_start_date_val, 'dd-mm-yyyy'), duration_val);
+
+**********************************************************************************************************************************************
+
+7.	PL/SQL trigger to be maintained when a member has finished their membership (free to decide how to implement that).
+
+
+
+**********************************************************************************************************************************************
+
+8.	Insert all values into borrowed along with null ret_con indicating book has not been returned. No more than 3 books can actively be
+	borrowed which is done by triggers in PL/SQL
+	
+insert into borrowed (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond)
+values (b_id_val, u_id_val, to_date(bor_date_val, 'dd-mm-yyyy'), bor_cond_val, null);
+
+
+**********************************************************************************************************************************************
+
+9.	Function in PL/SQL so that when it is called, it checks if a member has an overdue book borrowed.
+
+[NOT FORMATTED]
+CREATE OR REPLACE FUNCTION check_overdue_books(person_id IN NUMBER)
+RETURN BOOLEAN
+IS
+    overdue_books_count NUMBER;
+BEGIN
+    SELECT COUNT(*)
+    INTO overdue_books_count
+    FROM Borrowed
+    WHERE person_id = person_id AND borrowed_date + 30 < SYSDATE;
+
+    RETURN overdue_books_count > 0;
+END;
+
+**********************************************************************************************************************************************
+
+10.	Ability to view all books per genre (or collection of) or per user based on borrowing or buying or by author or publisher.
+
+**********************************************************************************************************************************************
+
+11.	Bought table for any person with both attributes to be filled and when executed, specified copies to be mentioned.
+
+**********************************************************************************************************************************************
+
+12. Delete Books by an Author ID or by a Publisher
+
+delete from books b1 where b1.b_id in (select b_id from wrote where a_id = a_id_val);
+
+delete from books b1 where b1.p_id = (select p_id from publisher where p_name = p_name_val);
+
+**********************************************************************************************************************************************
+
+13. Base query to view books
+
+select b.b_title, w.b_id, a.a_name, p.p_name, b.price, b.copies
+from book b, wrote w, author a, publisher p
+where b.b_id = w.b_id and a.a_id = w.a_id and b.p_id = p.p_id; 
+
+
+**********************************************************************************************************************************************
+
+14. Book has been returned so update borrowed table
+
+update borrowed set ret_con = ret_con_val where b_id = b_id_val and u_id = u_id_val;
+insert into borrowed_history select * from borrowed where u_id = u_id_val and b_id = b_id_val;
+delete from borrowed where b_id = b_id_val and u_id = u_id_val;
+
+
+--**********************************************************************************************************************************************
+
+--15. Trigger to not let more than 3 active borrows
+
+create or replace trigger active_borrows
+before insert on borrowed
+for each row
+declare
+	bor_count int := 0;
+	bor_3_exc exception;
+	pragma exception_init(bor_3_exc, -20001);
+begin
+	select count(u_id) into bor_count from borrowed where u_id = :new.u_id;
+	if bor_count >= 3 then
+		raise_application_error(-20001,'Already 3 unreturned books');
+	end if;
+exception	
+	when bor_3_exc then
+		:new.u_id := null;
+		dbms_output.put_line('Already 3 unreturned books');
+				
+end;
+/
+
+--16. Trigger to not let book with 0 copied be bought or borrowed
+
+create or replace trigger no_book_buy
+before insert on bought
+for each row
+declare
+	copy_val book.copies%type;
+	no_book_exc exception;
+	pragma exception_init(no_book_exc,-20001);
+begin	
+	select copies into copy_val from book where b_id = :new.b_id;
+	if copy_val <= 0 then
+		raise_application_error(-20001,'No available books');
+	end if;
+	update book set copies = copies - 1 where b_id = :new.b_id;
+exception
+	when no_book_exc then
+		:new.u_id := null;
+		dbms_output.put_line('No available books');
+		
+end;
+/
+
+create or replace trigger no_book_borrow
+before insert on borrowed
+for each row
+declare
+	copy_val book.copies%type;
+	no_book_exc exception;
+	pragma exception_init(no_book_exc,-20001);
+begin	
+	select copies into copy_val from book where b_id = :new.b_id;
+	if copy_val <= 0 then
+		raise_application_error(-20001,'No available books');
+	end if;
+	update book set copies = copies - 1 where b_id = :new.b_id;
+exception
+	when no_book_exc then
+		:new.u_id := null;
+		dbms_output.put_line('No available books');
+		
+end;
+/
+
+
+--17. Function to count number of books bought before
+
+create or replace function num_buy(u_id_val person.u_id%type)
+return int as
+	num_book int := 0;
+begin	
+	select count(u_id) into num_book from bought where u_id = u_id_val;
+	return num_book;
+end;
+/
+
+
+--18. Trigger to reduce payable cost depending on user conditions
+
+create or replace trigger lower_cost_bought
+before insert on bought
+for each row
+declare
+	num_book int := 0;
+begin
+	num_book := num_buy(:new.u_id);
+	if num_book >= 10 then
+		:new.amt := :new.amt * 95/100;
+	end if;
+end;
+/
+
+create or replace trigger lower_cost_bought_2
+before insert on bought
+for each row
+declare
+	u_id_val member.u_id%type := 0;
+begin
+	select count(u_id) into u_id_val from member where u_id = :new.u_id;
+	if u_id_val >= 1 then
+		:new.amt := :new.amt * 95/100;
+	end if;
+end;
+/	
+
+
+create or replace trigger no_book_borrow
+before delete on borrowed
+for each row
+declare
+begin
+	insert into borrowed_history (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond) values	
+	(:old.b_id, :old.u_id, :old.bor_date, :old.bor_dur, :old.bor_cond, :old.ret_cond);
+end;
+/
