@@ -71,8 +71,11 @@ end;
 /	
 
 
-create or replace trigger old_borrow
+<<<<<<< HEAD
 create or replace trigger old_borrows
+=======
+create or replace trigger old_borrows
+>>>>>>> 7b896bbf6d0410eaf18681c801c6799d7870b4b6
 before delete on borrowed
 for each row
 declare
