@@ -1,5 +1,4 @@
-package BorrowerEntry;
-
+package BuyBook;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class BorrowerEntryController implements Initializable {
+public class BuyBookController implements Initializable {
 
     Connection con;
     private Stage stage;
@@ -33,28 +32,7 @@ public class BorrowerEntryController implements Initializable {
     private TextField b_id_tf;
 
     @FXML
-    private TextField bor_con_tf;
-
-    @FXML
-    private Button cancel_button;
-
-    @FXML
-    private Button create_btn;
-
-    @FXML
-    private TextField dur_tf;
-
-    @FXML
-    private Label error_msg;
-
-    @FXML
-    private Label msg_lb;
-
-    @FXML
-    private TextField ret_con_tf;
-
-    @FXML
-    private TextField sd_tf;
+    private TextField pd_tf;
 
     @FXML
     private TextField u_id_tf;
@@ -71,26 +49,21 @@ public class BorrowerEntryController implements Initializable {
     }
 
     @FXML
-    void CreateMember(ActionEvent event) {
+    void Buyer(ActionEvent event) {
         int u_id_val = Integer.parseInt(u_id_tf.getText());
         int b_id_val = Integer.parseInt(b_id_tf.getText());
-        String sd_val = sd_tf.getText();
-        int dur_val = Integer.parseInt(dur_tf.getText());
-        String bor_con_val = bor_con_tf.getText();
-        // String ret_con_val = ret_con_tf.getText();
+        String sd_val = pd_tf.getText();
         PreparedStatement ps;
         int row;
         try {
-            ps = con.prepareStatement("insert into borrowed (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond) values " +
-                                            "(?,?,to_date(?,'DD-MM-YYYY'),?,?,?)");
-            ps.setInt(1,b_id_val);
-            ps.setInt(2,u_id_val);
+            ps = con.prepareStatement("insert into bought (u_id,b_id,pur_date,amt) values " +
+                                        "(?,?,to_date(?,'DD-MM-YYYY'),(select distinct price from book where b_id=?))");
+            ps.setInt(2,b_id_val);
+            ps.setInt(1,u_id_val);
             ps.setString(3,sd_val);
-            ps.setInt(4,dur_val);
-            ps.setString(5,bor_con_val);
-            ps.setNull(6,java.sql.Types.NULL);
+            ps.setInt(4,b_id_val);
             row = ps.executeUpdate();
-
+            System.out.println("Successful");
         }
         catch (SQLException e) {
             System.out.println("SQL ERROR");

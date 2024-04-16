@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorpaneLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReturnBook.ReturnBookController">
+   <children>
+      <AnchorPane layoutX="-451.0" layoutY="-108.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="150.0" layoutY="114.0" prefHeight="27.0" prefWidth="74.0" text="Book ID : " />
+      <TextField fx:id="u_id_tf" layoutX="233.0" layoutY="154.0" prefHeight="26.0" prefWidth="218.0" promptText="Required" />
+      <Label alignment="CENTER" layoutX="168.0" layoutY="44.0" prefHeight="44.0" prefWidth="263.0" text="Return Book">
+         <font>
+            <Font name="Times New Roman" size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="create_btn" layoutX="153.0" layoutY="293.0" mnemonicParsing="false" onAction="#CreateMember" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: aquamarine;" text="Create">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <Label fx:id="error_msg" layoutX="209.0" layoutY="172.0" prefHeight="26.0" prefWidth="192.0" text="Invalid Credentials, Please Try Again" textFill="#f20000" visible="false" />
+      <Button fx:id="cancel_button" layoutX="362.0" layoutY="293.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: ff4d4d;" text="Cancel">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <Label fx:id="msg_lb" alignment="CENTER" layoutX="198.0" layoutY="256.0" prefHeight="18.0" prefWidth="192.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="150.0" layoutY="153.0" prefHeight="27.0" prefWidth="74.0" text="Member ID : " />
+      <TextField fx:id="b_id_tf" layoutX="233.0" layoutY="114.0" prefHeight="26.0" prefWidth="218.0" promptText="Required" />
+      <Label alignment="CENTER_RIGHT" layoutX="92.0" layoutY="207.0" prefHeight="26.0" prefWidth="123.0" text="Returned Condition :" />
+      <TextField fx:id="ret_con_tf" layoutX="233.0" layoutY="201.0" prefHeight="38.0" prefWidth="234.0" promptText="Required" />
+   </children>
+</AnchorPane>

@@ -180,6 +180,26 @@ public class MainPageController implements Initializable{
         stage.show();
     }
 
+    @FXML
+    void retBook(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//ReturnBook//ReturnBookFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void buyBook(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//BuyBook//BuyBookFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

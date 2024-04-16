@@ -14,10 +14,10 @@
       </Label>
       <Button layoutX="43.0" layoutY="136.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Add Author" />
       <Button layoutX="43.0" layoutY="195.0" mnemonicParsing="false" onAction="#delAuthor" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Delete Author" />
-      <Button layoutX="192.0" layoutY="136.0" mnemonicParsing="false" onAction="#addBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: aquamarine;" text="Add Book" />
+      <Button layoutX="192.0" layoutY="136.0" mnemonicParsing="false" onAction="#addBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Add Book" />
       <Button layoutX="192.0" layoutY="195.0" mnemonicParsing="false" onAction="#delBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Delete Book" />
-      <Button layoutX="195.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Display Books" />
-      <Button layoutX="192.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: pink;" text="Update Book" />
+      <Button layoutX="195.0" layoutY="260.0" mnemonicParsing="false" onAction="#dispBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Display Books" />
+      <Button layoutX="195.0" layoutY="385.0" mnemonicParsing="false" onAction="#retBook" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Return Book" />
       <Button layoutX="43.0" layoutY="260.0" mnemonicParsing="false" onAction="#addPublisher" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Add Publisher" />
       <Button layoutX="43.0" layoutY="323.0" mnemonicParsing="false" onAction="#delPublisher" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Delete Publisher" />
       <Button layoutX="344.0" layoutY="136.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Add Personal Details" />
@@ -28,7 +28,7 @@
       <Button layoutX="538.0" layoutY="195.0" mnemonicParsing="false" onAction="#dispBuyer" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Buyer History" />
       <Button layoutX="344.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispMember" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="View Members" />
       <Button layoutX="538.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispBookGenre" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="View Book Details" />
-      <Button layoutX="195.0" layoutY="392.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: pink;" text="Buy Book" />
-      <Button layoutX="344.0" layoutY="392.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Borrow Book" />
+      <Button layoutX="344.0" layoutY="385.0" mnemonicParsing="false" onAction="#buyBook" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Buy Book" />
+      <Button layoutX="195.0" layoutY="323.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: lightgreen;" text="Borrow Book" />
    </children>
 </AnchorPane>
