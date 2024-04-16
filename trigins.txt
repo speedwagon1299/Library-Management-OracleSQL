@@ -71,7 +71,7 @@ end;
 /	
 
 
-create or replace trigger no_book_borrow
+create or replace trigger old_borrow
 before delete on borrowed
 for each row
 declare
