@@ -120,6 +120,16 @@ public class MainPageController implements Initializable{
         stage.show();
     }
 
+    @FXML
+    void addBorrow(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//BorrowerEntry//BorrowerEntryFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
