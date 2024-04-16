@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
@@ -89,14 +90,20 @@ public class BorrowerEntryController implements Initializable {
             ps.setString(5,bor_con_val);
             ps.setNull(6,java.sql.Types.NULL);
             row = ps.executeUpdate();
-            if(row == 0) {
-                //handle error
-            }
             ps = con.prepareStatement("update book set copies = copies - 1 where b_id = ?");
             ps.setInt(1,b_id_val);
             row = ps.executeUpdate();
-            if(row == 0) {
-                //handle error
+
+        }
+        catch (SQLException e) {
+            if(e.getErrorCode() == 2291) {
+                System.out.println("Trigger no book activated");
+            }
+            else if(e.getErrorCode() == 2292) {
+                System.out.println("Trigger 3 book activated");
+            }
+            else {
+                e.printStackTrace();
             }
         }
         catch (Exception e) {

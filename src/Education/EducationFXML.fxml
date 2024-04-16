@@ -7,14 +7,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NonFiction.NonFictionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Education.EducationController">
    <children>
-      <TableView fx:id="nonfiction_table" layoutX="37.0" layoutY="96.8" prefHeight="303.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="97.0">
+      <TableView fx:id="education_table" layoutX="37.0" layoutY="96.8" prefHeight="303.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="97.0">
         <columns>
           <TableColumn fx:id="b_title_col" prefWidth="75.0" text="Book Title" />
           <TableColumn fx:id="b_id_col" prefWidth="75.0" text="Book ID" />
-            <TableColumn fx:id="subgenre_col" prefWidth="75.0" text="Subgenre" />
-            <TableColumn fx:id="topic_col" prefWidth="75.0" text="Topic" />
+            <TableColumn fx:id="subject_col" prefWidth="75.0" text="Subject" />
+            <TableColumn fx:id="subject_area_col" prefWidth="75.0" text="Subject Area" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
