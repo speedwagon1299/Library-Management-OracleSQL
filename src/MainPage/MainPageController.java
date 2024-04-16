@@ -133,9 +133,46 @@ public class MainPageController implements Initializable{
     @FXML
     void dispBookGenre(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("..//Fiction//FictionFXML.fxml"));
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("..//NonFiction//NonFictionFXML.fxml"));
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("..//Education//EducationFXML.fxml"));
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("..//Children//ChildrenFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void dispMember(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//DisplayPerson//DisplayPersonFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void dispBorrow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//DisplayBorrower//DisplayBorrowerFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void dispBuyer(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//DisplayBuyer//DisplayBuyerFXML.fxml"));
+        root = loader.load();	
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void dispOldBorrow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//DisplayOldBorrower//DisplayOldBorrowerFXML.fxml"));
         root = loader.load();	
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="1038.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisplayBorrower.DisplayBorrowerController">
+   <children>
+      <TableView fx:id="borrow_table" layoutX="37.0" layoutY="96.8" prefHeight="557.0" prefWidth="1037.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="97.0">
+        <columns>
+          <TableColumn fx:id="b_title_col" prefWidth="75.0" text="Book Title" />
+          <TableColumn fx:id="b_id_col" prefWidth="75.0" text="Book ID" />
+            <TableColumn fx:id="u_name_col" prefWidth="75.0" text="Person Name" />
+            <TableColumn fx:id="u_id_col" prefWidth="75.0" text="Person ID" />
+            <TableColumn fx:id="b_date_col" prefWidth="75.0" text="Borrow Date" />
+            <TableColumn fx:id="b_dur_col" prefWidth="75.0" text="Borrow Duration" />
+            <TableColumn fx:id="b_cond_col" prefWidth="75.0" text="Borrow Condition" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <ComboBox fx:id="attrib_cb" layoutX="113.0" layoutY="33.0" onAction="#selectAttribute" prefHeight="26.0" prefWidth="198.0" promptText="Select Criteria" />
+      <TextField fx:id="attrib_tf" layoutX="424.0" layoutY="33.0" prefHeight="26.0" prefWidth="198.0" />
+      <Button layoutX="729.0" layoutY="33.0" mnemonicParsing="false" onAction="#CancelAction" prefHeight="26.0" prefWidth="57.0" text="Cancel" />
+      <!-- <Button fx:id="refresh_btn" layoutX="669.0" layoutY="34.0" mnemonicParsing="false" onAction="#reLoadData" text="Refresh" /> -->
+      <!-- <Button fx:id="refresh_btn" layoutX="687.0" layoutY="34.0" mnemonicParsing="false" onAction="#redoLoadData" text="Refresh" /> -->
+   </children>
+</AnchorPane>

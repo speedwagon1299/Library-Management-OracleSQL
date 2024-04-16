@@ -96,15 +96,7 @@ public class BorrowerEntryController implements Initializable {
 
         }
         catch (SQLException e) {
-            if(e.getErrorCode() == 2291) {
-                System.out.println("Trigger no book activated");
-            }
-            else if(e.getErrorCode() == 2292) {
-                System.out.println("Trigger 3 book activated");
-            }
-            else {
-                e.printStackTrace();
-            }
+            System.out.println("SQL ERROR");
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -1,0 +1,191 @@
+delete from bought;
+delete from borrowed;
+delete from member;
+delete from person;
+delete from childrenbook;
+delete from educationbook;
+delete from nonfictionbook;
+delete from fictionbook;
+delete from wrote;
+delete from book;
+delete from publisher;
+delete from author;
+
+
+
+
+create or replace trigger active_borrows
+before insert on borrowed
+for each row
+declare
+	bor_count int := 0;
+	bor_3_exc exception;
+	pragma exception_init(bor_3_exc, -20001);
+begin
+	select count(u_id) into bor_count from borrowed where u_id = :new.u_id;
+	if bor_count >= 3 then
+		raise_application_error(-20001,'Already 3 unreturned books');
+	end if;
+exception	
+	when bor_3_exc then
+		:new.u_id := null;
+		dbms_output.put_line('Already 3 unreturned books');
+				
+end;
+/
+
+
+create or replace function num_buy(u_id_val person.u_id%type)
+return int as
+	num_book int := 0;
+begin	
+	select count(u_id) into num_book from bought where u_id = u_id_val;
+	return num_book;
+end;
+/
+
+create or replace trigger lower_cost_bought
+before insert on bought
+for each row
+declare
+	num_book int := 0;
+begin
+	num_book := num_buy(:new.u_id);
+	if num_book >= 10 then
+		:new.amt := :new.amt * 95/100;
+	end if;
+end;
+/
+
+create or replace trigger lower_cost_bought_2
+before insert on bought
+for each row
+declare
+	u_id_val member.u_id%type := 0;
+begin
+	select count(u_id) into u_id_val from member where u_id = :new.u_id;
+	if u_id_val >= 1 then
+		:new.amt := :new.amt * 95/100;
+	end if;
+end;
+/	
+
+
+create or replace trigger no_book_borrow
+before delete on borrowed
+for each row
+declare
+begin
+	insert into borrowed_history (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond) values	
+	(:old.b_id, :old.u_id, :old.bor_date, :old.bor_dur, :old.bor_cond, :old.ret_cond);
+end;
+/
+
+
+create or replace trigger no_book_buy
+before insert on bought
+for each row
+declare
+	copy_val book.copies%type;
+	no_book_exc exception;
+	pragma exception_init(no_book_exc,-20001);
+begin	
+	select copies into copy_val from book where b_id = :new.b_id;
+	if copy_val <= 0 then
+		raise_application_error(-20001,'No available books');
+	end if;
+	update book set copies = copies - 1 where b_id = :new.b_id;
+exception
+	when no_book_exc then
+		:new.u_id := null;
+		dbms_output.put_line('No available books');
+		
+end;
+/
+
+create or replace trigger no_book_borrow
+before insert on borrowed
+for each row
+declare
+	copy_val book.copies%type;
+	no_book_exc exception;
+	pragma exception_init(no_book_exc,-20001);
+begin	
+	select copies into copy_val from book where b_id = :new.b_id;
+	if copy_val <= 0 then
+		raise_application_error(-20001,'No available books');
+	end if;
+	update book set copies = copies - 1 where b_id = :new.b_id;
+exception
+	when no_book_exc then
+		:new.u_id := null;
+		dbms_output.put_line('No available books');
+		
+end;
+/
+
+
+
+
+
+insert into publisher (p_id, p_name) values (1, 'Penguin');
+insert into publisher (p_id, p_name) values (2, 'Dark Horse');
+insert into publisher (p_id, p_name) values (3, 'Cengage');
+insert into publisher (p_id, p_name) values (4, 'Shounen');
+select * from publisher;
+
+insert into author (a_id, a_name, a_dob, a_email) values (1, 'JK Rowling', to_date('31-07-1965','DD-MM-YYYY'), 'jkrowl@gmail.com');
+insert into author (a_id, a_name, a_dob, a_email) values (2, 'HC Verma', to_date('03-04-1952','DD-MM-YYYY'), 'hcv@gmail.com');
+insert into author (a_id, a_name, a_dob, a_email) values (3, 'George Orwell', to_date('25-06-1902','DD-MM-YYYY'), null);
+insert into author (a_id, a_name, a_dob, a_email) values (4, 'Eichiro Oda', to_date('25-06-1969','DD-MM-YYYY'), null);
+select * from author;
+
+insert into book (b_id, b_title, p_id, year, price, copies) values (1, 'Harry Potter', 1, 1999, 200, 10);
+insert into book (b_id, b_title, p_id, year, price, copies) values (2, 'Animal Farm', 2, 1930, 300, 10);
+insert into book (b_id, b_title, p_id, year, price, copies) values (3, 'Phy Con', 3, 2010, 500, 10);
+insert into book (b_id, b_title, p_id, year, price, copies) values (4, 'One Piece', 4, 2010, 500, 10);
+select * from book;
+
+
+insert into wrote(b_id,a_id) values (1,1);
+insert into wrote(b_id,a_id) values (2,3);
+insert into wrote(b_id,a_id) values (3,2);
+insert into wrote(b_id,a_id) values (4,4);
+select * from wrote;
+
+
+insert into person (u_id, u_name, u_gender, u_phone, u_address, mem_status) values (1,'Srihari','M','9840977462','Chennai','T');
+insert into person (u_id, u_name, u_gender, u_phone, u_address, mem_status) values (2,'Varun','M','7824050393','Trivandrum','F');
+insert into person (u_id, u_name, u_gender, u_phone, u_address, mem_status) values (3,'Roshini','F','7824050333','Andra','T');
+
+select * from person;
+
+
+insert into member (u_id,mem_start_date,duration) values (1,to_date('01-01-2024','DD-MM-YYYY'),12);
+insert into member (u_id,mem_start_date,duration) values (3,to_date('01-01-2024','DD-MM-YYYY'),12);
+select * from member;
+
+insert into fictionbook (b_id, subgenre, target_age_grp) values (1,'Action','18-24');
+
+
+insert into nonfictionbook (b_id, subgenre, topic) values (2,'Animal','18-25');
+
+
+insert into educationbook (b_id, subject, subject_area) values (3,'Physics','JEE');
+
+
+insert into childrenbook (b_id, age_range, interactivity_level) values (4,'14-18','NA');
+
+
+
+insert into borrowed (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond) values (1,1,to_date('16-04-2024','DD-MM-YYYY'),3,'good',null);
+insert into borrowed (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond) values (2,1,to_date('16-04-2024','DD-MM-YYYY'),3,'good',null);
+insert into borrowed (b_id, u_id, bor_date, bor_dur, bor_cond, ret_cond) values (3,1,to_date('16-04-2024','DD-MM-YYYY'),3,'good',null);
+
+
+
+insert into bought (u_id,b_id,pur_date,amt) values (1,1,to_date('16-04-2024','DD-MM-YYYY'),(select distinct price from book where b_id=1));
+insert into bought (u_id,b_id,pur_date,amt) values (1,2,to_date('16-04-2024','DD-MM-YYYY'),(select distinct price from book where b_id=1));
+insert into bought (u_id,b_id,pur_date,amt) values (1,3,to_date('16-04-2024','DD-MM-YYYY'),(select distinct price from book where b_id=1));
+
+

@@ -1,0 +1,146 @@
+
+drop table bought;
+drop table borrowed;
+drop table borrowed_history;
+drop table member;
+drop table person;
+drop table childrenbook;
+drop table educationbook;
+drop table nonfictionbook;
+drop table fictionbook;
+drop table wrote;
+drop table book;
+drop table publisher;
+drop table author;
+
+
+create table author
+(
+	a_id number(3),
+	a_name varchar2(30) constraint a_name_nn not null,
+	a_dob date,
+	a_email varchar2(30) constraint a_email_un unique,
+	constraint pk_author primary key (a_id)
+);
+
+create table publisher
+(
+	p_id number(3),
+	p_name varchar2(30) constraint pub_name_un not null unique,
+	constraint pk_publisher primary key (p_id)
+);
+
+create table book
+(
+	b_id number(3),
+	b_title varchar2(30) constraint bname_un not null unique,
+	p_id number(3),
+	year number(4),
+	price numeric(6,2),
+	copies number(2) default 1,
+	constraint pk_book primary key (b_id),
+	constraint fk_book_publisher foreign key (p_id) references publisher (p_id) on delete cascade
+);
+
+create table wrote
+(
+	b_id number(3),
+	a_id number(3),
+	constraint pk_wrote primary key (b_id,a_id),
+	constraint fk_wrote_book foreign key (b_id) references book (b_id) on delete cascade,
+	constraint fk_wrote_author foreign key (a_id) references author (a_id) on delete cascade
+);
+
+create table fictionbook
+(
+	b_id number(3),
+	subgenre varchar2(20),
+	target_age_grp varchar2(5),
+	constraint pk_fictionbook primary key (b_id),
+	constraint fk_fictionbook_book foreign key (b_id) references book (b_id) on delete cascade
+);
+
+create table nonfictionbook
+(
+	b_id number(3),
+	subgenre varchar2(20),
+	topic varchar2(20),
+	constraint pk_nonfictionbook primary key (b_id),
+	constraint fk_nonfictionbook_book foreign key (b_id) references book (b_id) on delete cascade
+);
+
+create table educationbook
+(
+	b_id number(3),
+	subject varchar2(20),
+	subject_area varchar2(20),
+	grade_level varchar2(2),
+	constraint pk_educationbook primary key (b_id),
+	constraint fk_educationbook_book foreign key (b_id) references book (b_id) on delete cascade
+);
+
+create table childrenbook
+(
+	b_id number(3),
+	age_range varchar2(5),
+	interactivity_level varchar2(30),
+	constraint pk_childrenbook primary key (b_id),
+	constraint fk_childrenbook_book foreign key (b_id) references book (b_id) on delete cascade
+);
+
+create table person
+(
+	u_id number(3), 
+	u_name varchar2(30) constraint person_nn not null,
+	u_gender char(1),
+	u_phone varchar2(10) constraint phone_nn not null,
+	u_address varchar2(30),
+	mem_status char(1) constraint mem_status_nn not null,
+	constraint pk_person primary key (u_id),
+	constraint mf_gender check (u_gender in ('M','F','O')),
+	constraint tf_mem_status check (mem_status in ('T','F'))
+);
+
+create table member
+(
+	u_id number(3),
+	mem_start_date date constraint mem_start_date_nn not null,
+	duration number(2) constraint duration_nn not null,
+	constraint pk_member primary key (u_id),
+	constraint fk_member_person foreign key (u_id) references person (u_id) on delete cascade
+);
+
+create table borrowed
+(
+	u_id number(3),
+	b_id number(3),
+	bor_date date,
+	bor_dur number(2),
+	bor_cond varchar2(10),
+	ret_cond varchar2(10),
+	constraint pk_borrowed primary key (u_id,b_id),
+	constraint fk_borrowed_member foreign key (u_id) references member (u_id) on delete cascade,
+	constraint fk_borrowed_book foreign key (b_id) references book (b_id) on delete cascade
+);
+
+create table bought
+(
+	u_id number(3),
+	b_id number(3),
+	pur_date date,
+	amt numeric(6,2),
+	constraint pk_bought primary key (u_id,b_id),
+	constraint fk_bought_person foreign key (u_id) references person (u_id) on delete cascade,
+	constraint fk_bought_book foreign key (b_id) references book (b_id) on delete cascade
+);
+
+
+create table borrowed_history
+(
+	u_id number(3),
+	b_id number(3),
+	bor_date date,
+	bor_dur number(2),
+	bor_cond varchar2(10),
+	ret_cond varchar2(10)
+);

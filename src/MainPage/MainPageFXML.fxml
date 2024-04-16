@@ -23,12 +23,12 @@
       <Button layoutX="344.0" layoutY="136.0" mnemonicParsing="false" onAction="#addPerson" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Add Personal Details" />
       <Button layoutX="344.0" layoutY="195.0" mnemonicParsing="false" onAction="#delPerson" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Remove Personal Details" />
       <Button layoutX="344.0" layoutY="260.0" mnemonicParsing="false" onAction="#addMember" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Add/Renew Membership" />
-      <Button layoutX="538.0" layoutY="136.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="Current Borrower Details" />
-      <Button layoutX="538.0" layoutY="260.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="Borrower History" />
-      <Button layoutX="538.0" layoutY="195.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="Buyer History" />
-      <Button layoutX="344.0" layoutY="323.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="View People/Members" />
-      <Button layoutX="538.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispBookGenre" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="View Book Details" />
+      <Button layoutX="538.0" layoutY="136.0" mnemonicParsing="false" onAction="#dispBorrow" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Current Borrower Details" />
+      <Button layoutX="538.0" layoutY="260.0" mnemonicParsing="false" onAction="#dispOldBorrow" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Borrower History" />
+      <Button layoutX="538.0" layoutY="195.0" mnemonicParsing="false" onAction="#dispBuyer" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Buyer History" />
+      <Button layoutX="344.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispMember" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="View Members" />
+      <Button layoutX="538.0" layoutY="323.0" mnemonicParsing="false" onAction="#dispBookGenre" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="View Book Details" />
       <Button layoutX="195.0" layoutY="392.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: pink;" text="Buy Book" />
-      <Button layoutX="344.0" layoutY="392.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: pink;" text="Borrow Book" />
+      <Button layoutX="344.0" layoutY="392.0" mnemonicParsing="false" onAction="#addBorrow" prefHeight="34.0" prefWidth="154.0" style="-fx-background-color: lightgreen;" text="Borrow Book" />
    </children>
 </AnchorPane>
